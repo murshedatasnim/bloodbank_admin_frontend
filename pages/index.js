@@ -41,7 +41,7 @@ export default function Home() {
             </head>
 
 
-            <div className="ambulance">
+            {auth ? <div><div className="ambulance">
                 <Link href="/ambulance/search"><Button >Search Ambulance</Button></Link>
                 <style jsx>{`
                     .ambulance {
@@ -50,16 +50,23 @@ export default function Home() {
                     }
               `}</style>
             </div>
-            <div className="cylinder">
-            <Link href="/cylinder/search"><Button>Search Cylinder</Button></Link>
-                <style jsx>{`
+                <div className="cylinder">
+                    <Link href="/cylinder/search"><Button>Search Cylinder</Button></Link>
+                    <style jsx>{`
                     .cylinder {
                     margin-top: 10px;
                     text-align: center;
                     }
               `}</style>
-            </div>
-            
+                </div></div> : <div className="msg"><h3>{message}</h3>
+                <style jsx>{`
+                    .msg {
+                    margin-top: 10%;
+                    text-align: center;
+                    }
+              `}</style>
+                </div>}
+
 
 
         </Layout>

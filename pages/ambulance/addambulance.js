@@ -138,7 +138,7 @@ export default function AddAmbulance({ divisions}) {
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            <div className="card m-3">
+            {auth?<div className="card m-3">
                 <h5 className="card-header">Enter New Ambulance Data</h5>
                 <div className="card-body">
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -209,7 +209,14 @@ export default function AddAmbulance({ divisions}) {
                         </div>
                     </form>
                 </div>
-            </div>
+            </div>:<div className="msg"><h3>{message}</h3>
+                <style jsx>{`
+                    .msg {
+                    margin-top: 10%;
+                    text-align: center;
+                    }
+              `}</style>
+                </div>}
         </Layout>
     );
 }

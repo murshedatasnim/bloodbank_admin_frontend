@@ -12,6 +12,7 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import Search from '../cylinder/viewsearch'
 import { getDivision } from '../api/divisions';
+import { Button, Container } from 'react-bootstrap';
 
 export async function getStaticProps(context) {
     const divisions = await getDivision()
@@ -33,6 +34,10 @@ export default function SearchCylinder({ divisions }) {
     const [DistrictData, setDistrictData] = useState([]);
     const [isDistrict, setIsDistrict] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isNextPage, setIsNextPage] = useState(false);
+    const [isContent, setIsContent] = useState(true)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postData, setPostData] = useState('')
     const [result, setResult] = useState([]);
 
     const [message, setMessage] = useState('');
@@ -92,13 +97,15 @@ export default function SearchCylinder({ divisions }) {
         });
     }
 
+ 
+
 
     function onSubmit(data) {
         // display form data on success
         console.log(data);
         setIsSubmitted(false)
         setResult([])
-        axios.get('http://absb.herokuapp.com/api/search/cylinder/?text=' + data.text + '&DistrictCode=' + data.district + '&DivisionCode=' + data.division + '&page=1')
+        axios.get('http://absb.herokuapp.com/api/search/cylinder/?text=' + data.text + '&DistrictCode=' + data.district + '&DivisionCode=' + data.division)
             .then(response => {
                 // console.log('res', response.data);
                 setResult(response.data);
@@ -115,10 +122,10 @@ export default function SearchCylinder({ divisions }) {
                 <title>{siteTitle}</title>
             </head>
 
-            <div className="card m-3">
+            {auth ? <div className="card m-3">
                 <div className="card-header m-3"><h3>Search Oxygen Cylinder</h3></div>
                 <div className="card-body m-3">
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(onSubmit)} className="col-6">
                         <div className="form-row">
 
                             <div className="form-group">
@@ -161,6 +168,7 @@ export default function SearchCylinder({ divisions }) {
                         </div>
                     </form>
                     {isSubmitted && <Search cylinders={result} divisions={divisions} />}
+
                 </div>
 
                 {/* <style jsx>{`
@@ -168,7 +176,14 @@ export default function SearchCylinder({ divisions }) {
             margin-left: 20px;
             }
         `}</style> */}
-            </div>
+            </div> : <div className="msg"><h3>{message}</h3>
+                    <style jsx>{`
+                    .msg {
+                    margin-top: 10%;
+                    text-align: center;
+                    }
+              `}</style>
+                </div>}
         </Layout>
     );
 }

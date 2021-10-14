@@ -48,9 +48,9 @@ export default function ViewCylinder({ divisions, cylinders }) {
                         }
                     });
                     // console.log('res',credentials);
-                    // const content = await response.json();
+                    const content = await response.json();
 
-                    // setMessage(`Hi ${content.firstname}`);
+                    setMessage(`Hi ${content.firstname}`);
                     setAuth(true);
                 } catch (e) {
                     setMessage('You are not logged in');
@@ -67,7 +67,7 @@ export default function ViewCylinder({ divisions, cylinders }) {
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            <Container className="p-2">
+            {auth?<Container className="p-2">
                 {ambdata[0].map((amd, key) => {
 
                     return <div className="card m-3" key={key}>
@@ -127,7 +127,14 @@ export default function ViewCylinder({ divisions, cylinders }) {
                     </div>
 
                 })}
-            </Container>
+            </Container>:<div className="msg"><h3>{message}</h3>
+                <style jsx>{`
+                    .msg {
+                    margin-top: 10%;
+                    text-align: center;
+                    }
+              `}</style>
+                </div>}
 
         </Layout>
     );

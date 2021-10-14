@@ -9,19 +9,7 @@ import { getDivision } from '../api/divisions'
 import Update from "../cylinder/updatecylinder";
 import { useEffect, useState } from "react";
 import { Container, Button, Modal } from 'react-bootstrap';
-// import { route } from 'next/dist/server/router';
-// import { Router } from 'next/router';
-// import {auth } from '../auth'
 
-// export async function getStaticProps(context) {
-//     const divisions = await getDivision();
-//     // const ambulances = await getAmbulance();
-
-//     return {
-//         props: { divisions}
-//     }
-
-// }
 
 
 export default function Search({ divisions, cylinders }) {
@@ -31,7 +19,7 @@ export default function Search({ divisions, cylinders }) {
     const [modalShow, setModalShow] = useState(false);
     const [ambUpdate, SetAmbUpdate] = useState('');
     const router = useRouter();
-    // console.log(ambdata[0]);
+    console.log(ambdata[0]);
 
     return (
 

@@ -115,10 +115,10 @@ export default function SearchAmbulance({ divisions }) {
             <head>
                 <title>{siteTitle}</title>
             </head>
-            <div className="card m-3">
+            {auth?<div className="card m-3">
                 <div className="card-header m-3"><h3>Search Ambulance</h3></div>
                 <div className="card-body m-3">
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(onSubmit)} className="col-6">
                         <div className="form-row">
 
                             <div className="form-group">
@@ -174,7 +174,14 @@ export default function SearchAmbulance({ divisions }) {
             margin-left: 20px;
             }
         `}</style> */}
-            </div>
+            </div>:<div className="msg"><h3>{message}</h3>
+                <style jsx>{`
+                    .msg {
+                    margin-top: 10%;
+                    text-align: center;
+                    }
+              `}</style>
+                </div>}
         </Layout>
     );
 }
