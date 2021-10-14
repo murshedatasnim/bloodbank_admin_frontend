@@ -11,7 +11,7 @@ import axios from 'axios';
 
 
 import { useEffect, useState } from "react";
-import Search from '../ambulance/viewsearch'
+import Search from '../../components/ambulance/viewsearch'
 import { getDivision } from '../api/divisions';
 
 export async function getStaticProps(context) {

@@ -5,7 +5,7 @@ import React from 'react';
 import axios from 'axios';
 
 // import { getAmbulance } from '../api/ambulance'
-import Update from "../ambulance/updateAmbulance";
+import Update from "./updateAmbulance";
 import { useEffect, useState } from "react";
 import { Container, Button, Modal } from 'react-bootstrap';
 

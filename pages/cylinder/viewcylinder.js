@@ -9,7 +9,7 @@ import axios from 'axios';
 
 import { getDivision } from '../api/divisions'
 import { getAmbulance } from '../api/ambulance'
-import Update from "../cylinder/updatecylinder";
+import Update from "../../components/cylinder/updatecylinder";
 import { useEffect, useState } from "react";
 import { Container, Button, Modal } from 'react-bootstrap';
 import { getCylinder } from '../api/cylinder';

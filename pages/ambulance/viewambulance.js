@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../../layouts/Layout'
-import styles from './update.module.css'
+// import styles from './update.module.css'
 import {useRouter} from "next/router";
 
 // import { getDivision } from '../api/divisions'
@@ -9,7 +9,7 @@ import axios from 'axios';
 
 import { getDivision } from '../api/divisions'
 import { getAmbulance } from '../api/ambulance'
-import Update from "../ambulance/updateAmbulance";
+import Update from "../../components/ambulance/updateAmbulance";
 import { useEffect, useState } from "react";
 import { Container, Button, Modal } from 'react-bootstrap';
 // import { route } from 'next/dist/server/router';

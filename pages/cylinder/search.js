@@ -10,7 +10,7 @@ import React from 'react';
 import axios from 'axios';
 
 import { useEffect, useState } from "react";
-import Search from '../cylinder/viewsearch'
+import Search from '../../components/cylinder/viewsearch'
 import { getDivision } from '../api/divisions';
 import { Button, Container } from 'react-bootstrap';
 

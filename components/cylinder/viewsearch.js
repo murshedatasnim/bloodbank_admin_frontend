@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 import React from 'react';
 import axios from 'axios';
 
-import { getDivision } from '../api/divisions'
+import { getDivision } from '../../pages/api/divisions'
 // import { getAmbulance } from '../api/ambulance'
-import Update from "../cylinder/updatecylinder";
+import Update from "./updatecylinder";
 import { useEffect, useState } from "react";
 import { Container, Button, Modal } from 'react-bootstrap';
 
@@ -18,8 +18,9 @@ export default function Search({ divisions, cylinders }) {
     const ambdata = useState(cylinders)
     const [modalShow, setModalShow] = useState(false);
     const [ambUpdate, SetAmbUpdate] = useState('');
-    const router = useRouter();
+    // const router = useRouter();
     console.log(ambdata[0]);
+    
 
     return (
 

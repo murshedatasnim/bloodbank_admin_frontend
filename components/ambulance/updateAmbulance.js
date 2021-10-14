@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../../layouts/Layout'
-import utilStyles from '../../styles/utils.module.css'
+// import Head from 'next/head'
+// import Layout, { siteTitle } from './Layout'
+// import utilStyles from '../../styles/utils.module.css'
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -77,7 +77,7 @@ export default function Update(props) {
     function onSubmit(data) {
         // display form data on success
         // console.log(data);
-        axios.put('http://absb.herokuapp.com/api/cylinder/'+props.cylinder._id,
+        axios.put('http://absb.herokuapp.com/api/ambulance/'+props.ambulance._id,
             data, {
             headers: {
                 'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export default function Update(props) {
         })
             .then(function (response) {
                 // console.log(response);
-                alert('Oxygen Cylinder is successfully updated');
+                alert('Ambulance is successfully updated');
             })
             .catch(function (error) {
                 // console.log(error);
@@ -104,7 +104,7 @@ export default function Update(props) {
 
                         <div className="form-group col-5">
                             <label>Organization Name</label>
-                            <input name="organizationName" defaultValue={props.cylinder.organizationName} type="text" {...register('organizationName')} className={`form-control ${errors.organizationName ? 'is-invalid' : ''}`} />
+                            <input name="organizationName" defaultValue={props.ambulance.organizationName} type="text" {...register('organizationName')} className={`form-control ${errors.organizationName ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.organizationName?.message}</div>
                         </div>
                     </div>
@@ -149,7 +149,7 @@ export default function Update(props) {
 
                         <div className="form-group col-5">
                             <label>Contact No.</label>
-                            <input name="contactNo" defaultValue={props.cylinder.contactNo} type="text" {...register('contactNo')} className={`form-control ${errors.contactNo ? 'is-invalid' : ''}`} />
+                            <input name="contactNo" defaultValue={props.ambulance.contactNo} type="text" {...register('contactNo')} className={`form-control ${errors.contactNo ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.contactNo?.message}</div>
                         </div>
                     </div>
@@ -157,7 +157,7 @@ export default function Update(props) {
 
                         <div className="form-group col-5">
                             <label>Remarks</label>
-                            <input name="remarks" defaultValue={props.cylinder.remarks} type="text" {...register('remarks')} className='form-control' />
+                            <input name="remarks" defaultValue={props.ambulance.remarks} type="text" {...register('remarks')} className='form-control' />
                         </div>
                     </div>
                     <br />
