@@ -47,7 +47,7 @@ export default function SearchCylinder({ divisions }) {
         (
             async () => {
                 try {
-                    const response = await fetch('http://absb.herokuapp.com/api/user', {
+                    const response = await fetch('https://absb.herokuapp.com/api/user', {
                         headers: {
                             'Content-Type': 'application/json',
                             'x-auth-token': window.localStorage.getItem('x-auth-token')
@@ -91,7 +91,7 @@ export default function SearchCylinder({ divisions }) {
         console.log(e.target.value);
         e.target.value !== '' ? setIsDistrict(true) : setIsDistrict(false)
         setDivisionId(e.target.value);
-        axios.get('http://absb.herokuapp.com/api/area/dis/?id=' + e.target.value).then(response => {
+        axios.get('https://absb.herokuapp.com/api/area/dis/?id=' + e.target.value).then(response => {
             // console.log(response.data);
             setDistrictData(response.data);
         });
@@ -105,7 +105,7 @@ export default function SearchCylinder({ divisions }) {
         console.log(data);
         setIsSubmitted(false)
         setResult([])
-        axios.get('http://absb.herokuapp.com/api/search/cylinder/?text=' + data.text + '&DistrictCode=' + data.district + '&DivisionCode=' + data.division)
+        axios.get('https://absb.herokuapp.com/api/search/cylinder/?text=' + data.text + '&DistrictCode=' + data.district + '&DivisionCode=' + data.division)
             .then(response => {
                 // console.log('res', response.data);
                 setResult(response.data);

@@ -61,7 +61,7 @@ export default function Search({ divisions, cylinders }) {
                         </Modal>
                         <Button className="m-2" variant="primary" onClick={() => {
                             if (window.confirm('Delete the item?')) {
-                                axios.delete('http://absb.herokuapp.com/api/cylinder/' + amd._id, {
+                                axios.delete('https://absb.herokuapp.com/api/cylinder/' + amd._id, {
                                     headers: {
                                         'Content-Type': 'application/json',
                                         'x-auth-token': window.localStorage.getItem('x-auth-token')

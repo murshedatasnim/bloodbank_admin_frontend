@@ -56,7 +56,7 @@ export default function Update(props) {
     const ChangeDistrict = (e) => {
         console.log(e);
         setDivisionId(e.target.value);
-        axios.get('http://absb.herokuapp.com/api/area/dis/' + e.target.value).then(response => {
+        axios.get('https://absb.herokuapp.com/api/area/dis/' + e.target.value).then(response => {
             // console.log(response.data);
             setDistrictData(response.data);
         });
@@ -64,7 +64,7 @@ export default function Update(props) {
 
     const ChangeUpazilla = (e) => {
         setDistrictId(e.target.value);
-        axios.get('http://absb.herokuapp.com/api/area/upz/' + e.target.value).then(response => {
+        axios.get('https://absb.herokuapp.com/api/area/upz/' + e.target.value).then(response => {
             // console.log(response.data);
             setUpazillaData(response.data);
         });
@@ -77,7 +77,7 @@ export default function Update(props) {
     function onSubmit(data) {
         // display form data on success
         // console.log(data);
-        axios.put('http://absb.herokuapp.com/api/cylinder/'+props.cylinder._id,
+        axios.put('https://absb.herokuapp.com/api/cylinder/'+props.cylinder._id,
             data, {
             headers: {
                 'Content-Type': 'application/json',

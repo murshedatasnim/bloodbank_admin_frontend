@@ -41,7 +41,7 @@ export default function ViewCylinder({ divisions, cylinders }) {
         (
             async () => {
                 try {
-                    const response = await fetch('http://absb.herokuapp.com/api/user', {
+                    const response = await fetch('https://absb.herokuapp.com/api/user', {
                         headers: {
                             'Content-Type': 'application/json',
                             'x-auth-token': window.localStorage.getItem('x-auth-token')
@@ -104,7 +104,7 @@ export default function ViewCylinder({ divisions, cylinders }) {
                             </Modal>
                             <Button className="m-2" variant="primary" onClick={ () =>{if(window.confirm('Delete the item?'))
                                     
-                                   { axios.delete('http://absb.herokuapp.com/api/cylinder/'+amd._id, {
+                                   { axios.delete('https://absb.herokuapp.com/api/cylinder/'+amd._id, {
                                         headers: {
                                             'Content-Type': 'application/json',
                                             'x-auth-token': window.localStorage.getItem('x-auth-token')

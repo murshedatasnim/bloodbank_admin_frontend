@@ -33,7 +33,7 @@ export default function AddAmbulance({ divisions}) {
         (
             async () => {
                 try {
-                    const response = await fetch('http://absb.herokuapp.com/api/user', {
+                    const response = await fetch('https://absb.herokuapp.com/api/user', {
                         headers: {
                             'Content-Type': 'application/json',
                             'x-auth-token': window.localStorage.getItem('x-auth-token')
@@ -95,7 +95,7 @@ export default function AddAmbulance({ divisions}) {
 
     const ChangeDistrict = (e) => {
         setDivisionId(e.target.value);
-        axios.get('http://absb.herokuapp.com/api/area/dis/' + e.target.value).then(response => {
+        axios.get('https://absb.herokuapp.com/api/area/dis/' + e.target.value).then(response => {
             // console.log(response.data);
             setDistrictData(response.data);
         });
@@ -103,7 +103,7 @@ export default function AddAmbulance({ divisions}) {
 
     const ChangeUpazilla = (e) => {
         setDistrictId(e.target.value);
-        axios.get('http://absb.herokuapp.com/api/area/upz/' + e.target.value).then(response => {
+        axios.get('https://absb.herokuapp.com/api/area/upz/' + e.target.value).then(response => {
             // console.log(response.data);
             setUpazillaData(response.data);
         });
@@ -116,7 +116,7 @@ export default function AddAmbulance({ divisions}) {
     function onSubmit(data) {
         // display form data on success
         console.log(data);
-        axios.post('http://absb.herokuapp.com/api/ambulance/',
+        axios.post('https://absb.herokuapp.com/api/ambulance/',
             data,{headers: {
             'Content-Type': 'application/json',
             'x-auth-token': window.localStorage.getItem('x-auth-token')

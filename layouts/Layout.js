@@ -11,7 +11,7 @@ const Layout = (props) => {
     const router = useRouter();
 
     const logout = async () => {
-        await fetch('http://absb.herokuapp.com/api/auth/logout', {
+        await fetch('https://absb.herokuapp.com/api/auth/logout', {
             method: 'POST',
             body: JSON.stringify(window.localStorage.getItem('email')
             )

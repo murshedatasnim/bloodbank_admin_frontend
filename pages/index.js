@@ -12,7 +12,7 @@ export default function Home() {
         (
             async () => {
                 try {
-                    const response = await fetch('http://absb.herokuapp.com/api/user', {
+                    const response = await fetch('https://absb.herokuapp.com/api/user', {
                         headers: {
                             'Content-Type': 'application/json',
                             'x-auth-token': window.localStorage.getItem('x-auth-token')

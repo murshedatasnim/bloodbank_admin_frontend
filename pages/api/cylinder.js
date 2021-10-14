@@ -1,5 +1,5 @@
 export async function getCylinder() {
-    const response = await fetch("http://absb.herokuapp.com/api/cylinder/")
+    const response = await fetch("https://absb.herokuapp.com/api/cylinder/")
     const jsonData = await response.json()
     return jsonData
 }

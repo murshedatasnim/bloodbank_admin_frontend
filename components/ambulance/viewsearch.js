@@ -59,7 +59,7 @@ export default function search({ divisions, ambulances }) {
                         </Modal>
                         <Button className="m-2" variant="primary" onClick={() => {
                             if (window.confirm('Delete the item?')) {
-                                axios.delete('http://absb.herokuapp.com/api/ambulance/' + amd._id, {
+                                axios.delete('https://absb.herokuapp.com/api/ambulance/' + amd._id, {
                                     headers: {
                                         'Content-Type': 'application/json',
                                         'x-auth-token': window.localStorage.getItem('x-auth-token')

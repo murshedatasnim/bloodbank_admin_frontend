@@ -12,7 +12,7 @@ const Login = () => {
     const submit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('http://absb.herokuapp.com/api/auth/login', {
+        const res = await fetch('https://absb.herokuapp.com/api/auth/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             // credentials: 'include',

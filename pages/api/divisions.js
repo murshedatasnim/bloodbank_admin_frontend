@@ -1,5 +1,5 @@
 export async function getDivision() {
-    const response = await fetch("http://absb.herokuapp.com/api/area/")
+    const response = await fetch("https://absb.herokuapp.com/api/area/")
     const jsonData = await response.json()
     return jsonData
 }
