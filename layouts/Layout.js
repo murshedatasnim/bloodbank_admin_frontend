@@ -39,12 +39,12 @@ const Layout = (props) => {
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav className="ml-auto">
                         <NavDropdown title="Ambulance" id="basic-nav-dropdown1" active>
-                            <NavDropdown.Item><Link href="/ambulance/addambulance">Add</Link></NavDropdown.Item>
-                            <NavDropdown.Item><Link href="/ambulance/viewambulance">View</Link></NavDropdown.Item>
+                            <NavDropdown.Item href="/ambulance/addambulance">Add</NavDropdown.Item>
+                            <NavDropdown.Item href="/ambulance/viewambulance">View</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Oxygen Cylinder" id="basic-nav-dropdown2" active>
-                            <NavDropdown.Item><Link href="/cylinder/addcylinder">Add</Link></NavDropdown.Item>
-                            <NavDropdown.Item><Link href="/cylinder/viewcylinder">View</Link></NavDropdown.Item>
+                            <NavDropdown.Item href="/cylinder/addcylinder">Add</NavDropdown.Item>
+                            <NavDropdown.Item href="/cylinder/viewcylinder">View</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="#" onClick={logout} active>Logout</Nav.Link>
                     </Nav>
