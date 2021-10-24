@@ -64,7 +64,7 @@ export default function AddCylinder({ divisions}) {
     const validationSchema = Yup.object().shape({
         organizationName: Yup.string()
             .required('Organization Name is required')
-            .matches(/^.{5,}$/, "Please enter minimum 5 characters"),
+            .matches(/^.{3,}$/, "Please enter minimum 5 characters"),
         division: Yup.string()
             .required('Division is required')
             .matches(/^((?!Select Division).)*$/, "Please select a division"),
@@ -75,7 +75,7 @@ export default function AddCylinder({ divisions}) {
             .required('Upazilla is required')
             .matches(/^((?!Select Upazilla).)*$/, "Please select an upazilla"),
         contactNo: Yup.string()
-            .min(5)
+            .min(3)
             .required("This field is Required")
             .matches(/^[0-9]+$/, "Contact number is not valid"),
         // .matches(
@@ -115,9 +115,17 @@ export default function AddCylinder({ divisions}) {
 
     function onSubmit(data) {
         // display form data on success
-        console.log(data);
+        let datapost = data
+        if(datapost.upazilla==="Not provided"){
+            delete datapost.upazilla
+        }
+
+        if (datapost.remarks==="") {
+            datapost.remarks=" "
+        }
+
         axios.post('https://absb.herokuapp.com/api/cylinder/',
-            data,{headers: {
+            datapost,{headers: {
             'Content-Type': 'application/json',
             'x-auth-token': window.localStorage.getItem('x-auth-token')
         }})
@@ -179,6 +187,7 @@ export default function AddCylinder({ divisions}) {
                                 <label>Upazilla</label>
                                 <select name="upazilla" {...register('upazilla')} className={`form-control ${errors.upazilla ? 'is-invalid' : ''}`} >
                                     <option>Select Upazilla</option>
+                                    <option>Not provided</option>
                                     {UpazillaData.map((e, key) => {
                                         return <option key={key} value={e._id}>{e.Upazilla}</option>;
                                     })}
@@ -199,7 +208,7 @@ export default function AddCylinder({ divisions}) {
 
                             <div className="form-group col-5">
                                 <label>Remarks</label>
-                                <input name="remarks" type="text" {...register('remarks')} className='form-control' />
+                                <input name="remarks" type="text" {...register('remarks')} className='form-control' defaultValue=" " />
                             </div>
                         </div>
                         <br />

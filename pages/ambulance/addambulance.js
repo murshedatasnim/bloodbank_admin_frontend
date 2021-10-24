@@ -64,7 +64,7 @@ export default function AddAmbulance({ divisions}) {
     const validationSchema = Yup.object().shape({
         organizationName: Yup.string()
             .required('Organization Name is required')
-            .matches(/^.{5,}$/, "Please enter minimum 5 characters"),
+            .matches(/^.{3,}$/, "Please enter minimum 5 characters"),
         division: Yup.string()
             .required('Division is required')
             .matches(/^((?!Select Division).)*$/, "Please select a division"),
@@ -75,14 +75,14 @@ export default function AddAmbulance({ divisions}) {
             .required('Upazilla is required')
             .matches(/^((?!Select Upazilla).)*$/, "Please select an upazilla"),
         contactNo: Yup.string()
-            .min(5)
+            .min(3)
             .required("This field is Required")
             .matches(/^[0-9]+$/, "Contact number is not valid"),
         // .matches(
         //     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
         //     "Contact number is not valid"
         // )
-        remarks: Yup.string().nullable().notRequired()
+        remarks: Yup.string().notRequired().nullable()
 
 
     });
@@ -115,9 +115,20 @@ export default function AddAmbulance({ divisions}) {
 
     function onSubmit(data) {
         // display form data on success
-        console.log(data);
+        // console.log(data);
+
+        let datapost = data
+        // console.log(datapost);
+        if(datapost.upazilla==="Not provided"){
+            delete datapost.upazilla
+        }
+
+        if (datapost.remarks==="") {
+            datapost.remarks=" "
+        }
+        console.log(datapost);
         axios.post('https://absb.herokuapp.com/api/ambulance/',
-            data,{headers: {
+            datapost,{headers: {
             'Content-Type': 'application/json',
             'x-auth-token': window.localStorage.getItem('x-auth-token')
         }})
@@ -179,6 +190,7 @@ export default function AddAmbulance({ divisions}) {
                                 <label>Upazilla</label>
                                 <select name="upazilla" {...register('upazilla')} className={`form-control ${errors.upazilla ? 'is-invalid' : ''}`} >
                                     <option>Select Upazilla</option>
+                                    <option>Not provided</option>
                                     {UpazillaData.map((e, key) => {
                                         return <option key={key} value={e._id}>{e.Upazilla}</option>;
                                     })}
@@ -199,7 +211,7 @@ export default function AddAmbulance({ divisions}) {
 
                             <div className="form-group col-5">
                                 <label>Remarks</label>
-                                <input name="remarks" type="text" {...register('remarks')} className='form-control' />
+                                <input name="remarks" type="text" {...register('remarks')} className={`form-control`} defaultValue=" " />
                             </div>
                         </div>
                         <br />
